@@ -33,3 +33,34 @@ irrelevant columns, splitting data-time details and ensuring the data consistenc
    If any errors arise during the conversion, replace those error values with the number 1
    From the Data view, create a new calculated column, such that if the unit in the units column is not kg, divide the corresponding value in the values column by 1000 to convert it to kilograms
    Return to the Power Query Editor and delete any columns that are no longer needed
+
+
+### Date Table Generation
+
+To create the date table, I used the following DAX formula in Power BI:
+
+```DAX
+DateTable = CALENDAR(MIN('Orders'[Order Date]), MAX('Orders'[Shipping Date]))
+
+### Power BI Data Model
+
+![Power BI Data Model](![Uploading image.png…]()
+)
+
+### Key Measures and Calculated Columns
+
+- **Total Revenue:**
+  ```DAX
+  Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[Sale_Price]))
+
+Total Profit = SUMX(Orders, (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity])
+
+Total Customers = COUNTROWS(VALUES(Orders[CustomerID]))
+
+Total Quantity = SUM(Orders[Product Quantity])
+
+Revenue YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), Orders[Product Quantity] * RELATED(Products[Sale_Price])))
+
+Profit YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity]))
+
+
