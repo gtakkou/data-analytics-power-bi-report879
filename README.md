@@ -63,4 +63,20 @@ Revenue YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), 
 
 Profit YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity]))
 
+## Report Pages
+
+The project includes the following report pages:
+1. **Executive Summary:** Overview of key metrics and visualizations.
+2. **Customer Detail:** Detailed insights into customer behavior.
+3. **Product Detail:** Analysis of product sales and performance.
+4. **Stores Map:** Geographical representation of sales.
+
+## Visualizations
+
+The visualizations in this project include:
+- **Line Chart:** Showing trends in total customers over time.
+- **Donut Chart:** Displaying the distribution of customers by country.
+- **Column Chart:** Illustrating the number of customers per product category.
+
+
 
