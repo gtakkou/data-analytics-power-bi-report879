@@ -78,5 +78,65 @@ The visualizations in this project include:
 - **Donut Chart:** Displaying the distribution of customers by country.
 - **Column Chart:** Illustrating the number of customers per product category.
 
+# Quarterly KPI Visualization - README
+
+This README provides instructions for creating Key Performance Indicators (KPIs) for Quarterly Revenue, Orders, and Profit using [YourTool]. The goal is to visualize the metrics and their targets for effective performance monitoring.
+
+## Instructions
+
+### Step 1: Create Quarterly Measures
+
+1.1. Create the following measures for the Previous Quarter and Targets:
+   - `Previous Quarter Profit`
+   - `Previous Quarter Revenue`
+   - `Previous Quarter Orders`
+   - `Target Profit` (5% growth compared to the previous quarter)
+   - `Target Revenue` (5% growth compared to the previous quarter)
+   - `Target Orders` (5% growth compared to the previous quarter)
+
+### Step 2: Add Revenue KPI
+
+2.1. Create a new KPI for Revenue:
+
+   - **Value Field:** Total Revenue
+   - **Trend Axis:** Start of Quarter
+   - **Target:** Target Revenue
+
+2.2. In the Format Pane:
+   - Set Trend Axis to On.
+   - Expand the associated tab and set the following values:
+      - **Direction:** High is Good
+      - **Bad Colour:** Red
+      - **Transparency:** 15%
+
+2.3. Format the Callout Value to show only 1 decimal place.
+
+### Step 3: Duplicate Cards for Profit and Orders
+
+3.1. Duplicate the Revenue KPI card two more times.
+
+3.2. For the duplicated cards:
+   - Set the Value Field to `Total Profit` for the Profit card.
+   - Set the Value Field to `Total Orders` for the Orders card.
+   - Ensure Trend Axis and Target values are appropriately updated.
+
+### Step 4: Arrange Cards
+
+4.1. Arrange the three cards (Revenue, Profit, Orders) below the Revenue line chart for a comprehensive view.
+
+### Step 5: Review and Share
+
+5.1. Review the visualization to ensure accurate representation and adherence to business goals.
+
+5.2. Share the [YourTool] report or dashboard with relevant stakeholders.
+
+## Notes
+
+- Adjust placeholders like [YourTool] and [YourDataset] with your actual tool and dataset names.
+- Refer to [YourTool] documentation for specific instructions on creating measures, KPIs, and formatting options.
+
+Happy visualizing!
+
+
 
 
