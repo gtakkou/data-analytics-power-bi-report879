@@ -137,6 +137,68 @@ This README provides instructions for creating Key Performance Indicators (KPIs)
 
 Happy visualizing!
 
+# Power BI Report README
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Instructions](#instructions)
+  - [Adding a Button](#adding-a-button)
+  - [Creating a Rectangle Shape](#creating-a-rectangle-shape)
+  - [Adding Slicers](#adding-slicers)
+  - [Configuring Slicers](#configuring-slicers)
+  - [Setting Tooltip for the Button](#setting-tooltip-for-the-button)
+  - [Creating Bookmarks](#creating-bookmarks)
+- [Notes](#notes)
+- [License](#license)
+
+## Introduction
+This Power BI report is designed to include a customized navigation bar, slicers, and a slicer toolbar with specific functionalities. It provides a user-friendly interface for interacting with data.
+
+## Features
+- Customized navigation bar with buttons.
+- Rectangle shape serving as a slicer toolbar.
+- Slicers for filtering data by "Product Category" and "Country."
+- Bookmarks for toggling the visibility of the slicer toolbar.
+
+## Instructions
+
+### Adding a Button
+1. Go to the "Home" tab.
+2. Click on the "Button" control to add a blank button to the report canvas.
+3. Customize the button properties, set the icon type to "Custom," and choose "Filter_icon.png" as the icon image.
+4. Set the tooltip text to "Open Slicer Panel."
+
+### Creating a Rectangle Shape
+1. Add a rectangle shape from the "Home" tab.
+2. Customize the rectangle's dimensions and color to match the navigation bar.
+3. Bring the rectangle to the top of the stacking order in the Selection pane.
+
+### Adding Slicers
+1. Drag "Products[Category]" and "Stores[Country]" fields into the report canvas.
+2. Rename slicers to "Product Category" and "Country" in the "Visualizations" pane.
+3. Set slicer style to "Vertical List."
+
+### Configuring Slicers
+1. Configure "Product Category" slicer to allow multiple selections.
+2. Configure "Country" slicer for single selection and enable the "Select All" option.
+
+### Setting Tooltip for the Button
+1. Select the button.
+2. Open the Format pane and set the tooltip text to "Open Slicer Panel."
+
+### Creating Bookmarks
+1. Open the Bookmarks pane from the "View" tab.
+2. Add two new bookmarks: "Slicer Bar Closed" and "Slicer Bar Open."
+3. Hide/Show the toolbar group in the Selection pane for each bookmark.
+4. Right-click on each bookmark and ensure that "Data" is unchecked.
+
+## Notes
+- Make sure to save your work regularly.
+- Test the functionality of buttons, slicers, and bookmarks to ensure they work as expected.
+
+## License
+This project is licensed under the [Your License Here] License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 
