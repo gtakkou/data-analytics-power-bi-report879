@@ -197,8 +197,17 @@ This Power BI report is designed to include a customized navigation bar, slicers
 - Make sure to save your work regularly.
 - Test the functionality of buttons, slicers, and bookmarks to ensure they work as expected.
 
-## License
-This project is licensed under the [Your License Here] License - see the [LICENSE.md](LICENSE.md) file for details.
+### Creating a Custom Tooltip Page
+1. Create a new blank page in Power BI.
+2. Add the Profit Gauge visual to this new page.
+3. Return to the original page with the map visual.
+4. Select the map visual.
+5. In the Visualizations pane, drag the new custom tooltip page into the "Tooltip" field well.
+6. Adjust the formatting and appearance of the tooltip in the Format pane.
+
+## Notes
+- Make sure to save your work regularly.
+- Test the functionality of buttons, slicers, bookmarks, and tooltips to ensure they work as expected.
 
 
 
