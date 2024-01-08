@@ -205,9 +205,51 @@ This Power BI report is designed to include a customized navigation bar, slicers
 5. In the Visualizations pane, drag the new custom tooltip page into the "Tooltip" field well.
 6. Adjust the formatting and appearance of the tooltip in the Format pane.
 
-## Notes
-- Make sure to save your work regularly.
-- Test the functionality of buttons, slicers, bookmarks, and tooltips to ensure they work as expected.
+Interactions Configuration
+Executive Summary Page
+Product Category Bar Chart and Top 10 Products Table: These visuals will not filter the card visuals or KPIs.
+Customer Detail Page
+Top 20 Customers Table: Will not filter any other visuals.
+Total Customers by Product Donut Chart: Will not affect the Customers Line Graph.
+Total Customers by Country Donut Chart: Cross-filters the Total Customers by Product Donut Chart.
+Product Detail Page
+Orders vs. Profitability Scatter Graph: Does not affect any other visuals.
+Top 10 Products Table: Does not affect any other visuals.
+Navigation Buttons
+Executive Summary Page
+In the sidebar of the Executive Summary page, four new blank buttons have been added.
+
+Button 1 (Icon: ExecutiveSummaryWhite.png):
+
+Default Appearance: White
+Hover Appearance: Cyan
+Action: Page navigation to Executive Summary Page
+Button 2 (Icon: CustomerDetailWhite.png):
+
+Default Appearance: White
+Hover Appearance: Cyan
+Action: Page navigation to Customer Detail Page
+Button 3 (Icon: ProductDetailWhite.png):
+
+Default Appearance: White
+Hover Appearance: Cyan
+Action: Page navigation to Product Detail Page
+Button 4 (Icon: HomeWhite.png):
+
+Default Appearance: White
+Hover Appearance: Cyan
+Action: Page navigation to Home or main landing page
+Customer Detail Page
+Buttons are identical in appearance to the Executive Summary Page.
+
+Product Detail Page
+Buttons are identical in appearance to the Executive Summary Page.
+
+How to Use
+Open the Power BI report.
+Navigate between pages using the custom navigation buttons in the sidebar.
+Explore the visuals on each page, keeping in mind the defined interactions for a seamless and focused analysis.
+Additional Notes
 
 
 
