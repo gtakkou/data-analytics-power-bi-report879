@@ -71,28 +71,29 @@
    ```DAX
    DateTable = CALENDAR(MIN('Orders'[Order Date]), MAX('Orders'[Shipping Date]))
    ```
-### Power BI Data Model
-
-   <!-- ![Power BI Data Model](![file://photos/screenshot.png "Optional Title"]()
-   ) -->
-   ![Power BI Data Model](file://photos/screenshot.png "Optional Title")
+  
 
 ### Key Measures and Calculated Columns
 
-- **Total Revenue:**
-  ```DAX
+- **Total Revenue, Total Profit, Total Customers, Total Quantity, Revenue YTD, Pofit YTD:**
+  ```
   Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[Sale_Price]))
   ```
-
-   - Total Profit = SUMX(Orders, (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity])
-
-   - Total Customers = COUNTROWS(VALUES(Orders[CustomerID]))
-
-   - Total Quantity = SUM(Orders[Product Quantity])
-
-   - Revenue YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), Orders[Product Quantity] * RELATED(Products[Sale_Price])))
-
-   - Profit YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity]))
+    ```
+   Total Profit = SUMX(Orders, (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity])
+    ```
+    ```
+   Total Customers = COUNTROWS(VALUES(Orders[CustomerID]))
+    ```
+    ```
+   Total Quantity = SUM(Orders[Product Quantity])
+    ```
+    ```
+   Revenue YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), Orders[Product Quantity] * RELATED(Products[Sale_Price])))
+    ```
+    ```
+   Profit YTD = CALCULATE(SUMX(FILTER(ALL('Date'), 'Date'[Year] = YEAR(TODAY())), (RELATED(Products[Sale_Price]) - RELATED(Products[Cost_Price])) * Orders[Product Quantity]))
+    ```
 
 ## Report Pages
 
@@ -109,67 +110,64 @@ The visualizations in this project include:
 - **Donut Chart:** Displaying the distribution of customers by country.
 - **Column Chart:** Illustrating the number of customers per product category.
 
-# Quarterly KPI Visualization - README
+# Quarterly KPI Visualization - 
 
    This section provides instructions for creating Key Performance Indicators (KPIs) for Quarterly Revenue, Orders, and Profit using [YourTool]. The goal is to visualize the metrics and their targets for effective performance monitoring.
 
-### Instructions
+## Instructions
 
    Step 1: Create Quarterly Measures
 
-   1.1. Create the following measures for the Previous Quarter and Targets:
-      - `Previous Quarter Profit`
-      - `Previous Quarter Revenue`
-      - `Previous Quarter Orders`
-      - `Target Profit` (5% growth compared to the previous quarter)
-      - `Target Revenue` (5% growth compared to the previous quarter)
-      - `Target Orders` (5% growth compared to the previous quarter)
+      1.1. Create the following measures for the Previous Quarter and Targets:
+   -  `Previous Quarter Profit`
+   -  `Previous Quarter Revenue`
+   -  `Previous Quarter Orders`
+   -  `Target Profit (5% growth compared to the previous quarter)`
+   -  `Target Revenue (5% growth compared to the previous quarter)`
+   -  `Target Orders (5% growth compared to the previous quarter)`
 
    Step 2: Add Revenue KPI
 
-   2.1. Create a new KPI for Revenue:
+      2.1. Create a new KPI for Revenue:
 
       - **Value Field:** Total Revenue
       - **Trend Axis:** Start of Quarter
       - **Target:** Target Revenue
 
-   2.2. In the Format Pane:
+      2.2. In the Format Pane:
       - Set Trend Axis to On.
       - Expand the associated tab and set the following values:
          - **Direction:** High is Good
          - **Bad Colour:** Red
          - **Transparency:** 15%
 
-   2.3. Format the Callout Value to show only 1 decimal place.
+         2.3. Format the Callout Value to show only 1 decimal place.
 
-   Step 3: Duplicate Cards for Profit and Orders
+Step 3: Duplicate Cards for Profit and Orders
 
-   3.1. Duplicate the Revenue KPI card two more times.
+      3.1. Duplicate the Revenue KPI card two more times.
 
-   3.2. For the duplicated cards:
+      3.2. For the duplicated cards:
       - Set the Value Field to `Total Profit` for the Profit card.
       - Set the Value Field to `Total Orders` for the Orders card.
       - Ensure Trend Axis and Target values are appropriately updated.
 
-   Step 4: Arrange Cards
+Step 4: Arrange Cards
 
-   4.1. Arrange the three cards (Revenue, Profit, Orders) below the Revenue line chart for a comprehensive view.
+      4.1. Arrange the three cards (Revenue, Profit, Orders) below the Revenue line chart for a comprehensive view.
 
-   Step 5: Review and Share
+Step 5: Review and Share
 
-   5.1. Review the visualization to ensure accurate representation and adherence to business goals.
+      5.1. Review the visualization to ensure accurate representation and adherence to business goals.
 
-   5.2. Share the [YourTool] report or dashboard with relevant stakeholders.
+      5.2. Share the [YourTool] report or dashboard with relevant stakeholders.
 
    ### Notes
 
    - Adjust placeholders like [YourTool] and [YourDataset] with your actual tool and dataset names.
    - Refer to [YourTool] documentation for specific instructions on creating measures, KPIs, and formatting options.
 
-   Happy visualizing!
-
-
-
+   
    ## Slicers and buttons
       This Power BI report is designed to include a customized navigation bar, slicers, and a slicer toolbar with specific functionalities. It provides a user-friendly interface for interacting with data.
 
@@ -281,27 +279,65 @@ This repository serves as a documentation and execution hub for SQL queries on a
 ### 1. How many staff are there in all of the UK stores?
 
    ```sql
-   -- SQL Query (question_1.sql)
+   
    SELECT COUNT(*) as total_staff
    FROM staff
    WHERE store_location = 'UK';
+   ```
 
 ### 2. Which month in 2022 has had the highest revenue?
-   -- SQL Query (question_2.sql)
+   
+   ```
    SELECT EXTRACT(MONTH FROM order_date) as month, SUM(revenue) as total_revenue
    FROM orders
    WHERE EXTRACT(YEAR FROM order_date) = 2022
    GROUP BY month
    ORDER BY total_revenue DESC
    LIMIT 1;
+   ```
 
 ### 3. Which German store type had the highest revenue for 2022?
+   ```
+   SELECT dim_store.store_type,ROUND(SUM(orders.product_quantity*dim_product.sale_price)::numeric, 1) AS store_revenue
+   FROM orders
+   JOIN dim_store on dim_store.store_code = orders.store_code
+   JOIN dim_product on dim_product.product_code = orders.product_code
+   WHERE dim_store.country_code = 'DE'
+   GROUP BY dim_store.store_type
+   ORDER BY store_revenue DESC;
+   ```
 
 
 
 ### 4. Create a view with total sales, percentage of total sales, and count of orders by store types
+```
+CREATE VIEW StoreSummary AS
+SELECT
+    store_type,
+    SUM(order_amount) AS total_sales,
+    (SUM(order_amount) / (SELECT SUM(order_amount) FROM Orders)) * 100 AS percentage_of_total_sales,
+    COUNT(order_id) AS order_count
+FROM
+    Orders
+GROUP BY
+    store_type;
+```
 
 ### 5. Which product category generated the most profit for the "Wiltshire, UK" region in 2021?
+```
+SELECT 
+    dim_product.category,
+    SUM((dim_product.sale_price - dim_product.cost_price) * orders.product_quantity) AS total_profit
+    FROM orders
+JOIN dim_store on dim_store.store_code = orders.store_code
+JOIN dim_product on dim_product.product_code = orders.product_code
+WHERE dim_store.full_region = 'Wiltshire, UK'
+AND EXTRACT("YEAR" FROM TO_DATE(orders.order_date,'YYYY-MM-DD')) = 2021
+GROUP BY dim_product.category 
+ORDER BY total_profit DESC
+;
+```
+
 
 
 
